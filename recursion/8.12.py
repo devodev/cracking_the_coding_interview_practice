@@ -2,21 +2,19 @@
 def print_ways(size, r, columns, results):
     if r == size:
         results.append(columns[:])
-    else:
-        for i in range(size):
-            if valid(columns, r, i):
-                columns[r] = i
-                print_ways(size, r+1, columns, results)
+        return
+    for i in range(size):
+        if valid(columns, r, i):
+            columns[r] = i
+            print_ways(size, r+1, columns, results)
 
 
 def valid(columns, r, c):
     for r2 in range(r):
         c2 = columns[r2]
-
-        if c == c2:
+        if c2 == c:
             return False
-
-        col_distance = abs(c2-c)
+        col_distance = abs(c-c2)
         row_distance = r-r2
         if col_distance == row_distance:
             return False
