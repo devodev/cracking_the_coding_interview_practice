@@ -68,12 +68,16 @@ if __name__ == '__main__':
     node5.right.right.right = Node(5)
     node5.right.right.right.left = Node(10)
 
+    tests = [
+        (is_balanced(node1), False),
+        (is_balanced(node2), True),
+        (is_balanced(node3), True),
+        (is_balanced(node4), None),
+        (is_balanced(node5), True)
+    ]
     try:
-        assert is_balanced(node1) == False
-        assert is_balanced(node2) == True
-        assert is_balanced(node3) == True
-        assert is_balanced(node4) == None
-        assert is_balanced(node5) == True
+        for test, expectation in tests:
+            assert test == expectation
     except AssertionError:
         print('Test failed')
     else:
